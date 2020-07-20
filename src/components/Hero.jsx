@@ -5,7 +5,7 @@ class Hero extends Component{
 
     state = {};
     render(){
-        return <h1>Avengers incoming.....</h1>
+        return <h1>Avengers incoming..</h1>
     }
 
 }
