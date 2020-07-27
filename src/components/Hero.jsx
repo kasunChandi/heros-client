@@ -3,9 +3,12 @@ import React, { Component } from "react";
 
 class Hero extends Component{
 
-    state = {};
+    state = {heroid: 99 };
     render(){
-        return <h1>Avengers incoming..</h1>
+        return (<React.Fragment>
+             <h1>Avengers incoming..</h1>
+        <button>Click here {this.state.heroid }</button> 
+            </React.Fragment>);
     }
 
 }
