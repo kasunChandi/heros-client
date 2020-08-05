@@ -19,7 +19,7 @@ class Hero extends Component{
             */
            return (
                <div className="card" style= {{width: "18rem"}}>
-                <img src="https://p1.hiclipart.com/preview/707/869/118/the-a-avengers-logo-png-clipart.jpg" 
+                <img src={this.props.avenger.imgUrl} className="card-img-top"
                 className="card-img-top" alt="..."/>
                 <div className="card-body">
                 <h5 className="card-title">{this.props.avenger.name}</h5>
