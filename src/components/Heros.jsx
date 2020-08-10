@@ -22,7 +22,10 @@ allavengers : [
               {this.state.allavengers.map((avenger) => (
               <div className ="col"  key ={avenger.id}>
 
-              <Hero key ={avenger.id}  likeCount ={avenger.likeCount} avenger={avenger} />
+              <Hero key ={avenger.id}  
+              avenger={avenger} 
+              onDelete={() => this.deleteAvenger(avenger.id)} 
+              onLike ={() => this.likeAvenger(avenger)}  />
               </div>
               ))}
 
@@ -34,6 +37,27 @@ allavengers : [
 
 
     }
+
+    async likeAvenger(avenger){
+          await axios.put(`http://localhost:5000/api/heroes/${avenger.id}`,{
+            likeCount : avenger.likeCount +1,
+          });
+
+let allavengers = [...this.state.allavengers];
+let index = allavengers.indexOf(avenger);
+allavengers[index] = {...avenger };
+allavengers[index].likeCount++;
+this.setState({allavengers : allavengers })
+
+    }
+     
+   async deleteAvenger(avengertodelete){
+     let newAvengers = this.state.allavengers.filter( (avenger)=> avenger.id !== avengertodelete);
+      await axios.delete(`http://localhost:5000/api/heroes/${avengertodelete}`)
+      this.setState({allavengers : newAvengers});
+    }
+
+
 
      async componentDidMount(){
 
